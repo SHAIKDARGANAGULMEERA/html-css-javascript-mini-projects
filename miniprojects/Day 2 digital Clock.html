@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Digital Clock</title>
+
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      background: linear-gradient(red, blue);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 30px;
+    }
+
+    #hr, #min, #sec {
+      width: 150px;
+      height: 100px;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      font-size: 40px;
+      border: none;
+    }
+
+    span {
+      font-size: 40px;
+    }
+
+    #ampm {
+      font-size: 30px;
+      margin-left: 15px;
+    }
+  </style>
+</head>
+
+<body>
+<link rel = "https://images.meesho.com/images/products/643127988/dqcz1_512.webp?width=512">
+  <h1>Digital Clock</h1>
+
+  <button id="hr">0</button>
+  <span>:</span>
+  <button id="min">0</button>
+  <span>:</span>
+  <button id="sec">0</button>
+
+  <span id="ampm"></span>
+
+  <script>
+
+    let hr1 = document.getElementById("hr");
+    let min1 = document.getElementById("min");
+    let sec1 = document.getElementById("sec");
+    let ampm1 = document.getElementById("ampm");
+
+    function showTime() {
+
+      let time = new Date();
+
+      let hour = time.getHours();
+      let minute = time.getMinutes();
+      let second = time.getSeconds();
+
+      let ampm;
+
+      // AM or PM
+      if (hour >= 12) {
+        ampm = "PM";
+      } else {
+        ampm = "AM";
+      }
+
+      // Convert 24-hour to 12-hour
+      if (hour > 12) {
+        hour = hour - 12;
+      }
+
+      // 00 → 12
+      if (hour == 0) {
+        hour = 12;
+      }
+
+      // Display
+      hr1.textContent = hour;
+      min1.textContent = minute;
+      sec1.textContent = second;
+      ampm1.textContent = ampm;
+    }
+
+    showTime();
+
+    // Update every 1 second
+    setInterval(showTime, 1000);
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Glassmorphism Counter App</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background:
+        radial-gradient(circle at top left, #7c3aed, transparent 40%),
+        radial-gradient(circle at bottom right, #06b6d4, transparent 40%),
+        linear-gradient(135deg, #0f172a, #1e1b4b);
+
+      color: white;
+      overflow: hidden;
+    }
+
+    /* Decorative circles */
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(5px);
+      z-index: 0;
+    }
+
+    body::before {
+      width: 220px;
+      height: 220px;
+      background: rgba(168, 85, 247, 0.45);
+      top: 10%;
+      left: 15%;
+    }
+
+    body::after {
+      width: 260px;
+      height: 260px;
+      background: rgba(34, 211, 238, 0.35);
+      bottom: 5%;
+      right: 12%;
+    }
+
+    /* Glass Card */
+    .counter-card {
+      position: relative;
+      z-index: 1;
+
+      width: 350px;
+      padding: 40px 30px;
+
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 25px;
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    #count {
+      font-size: 80px;
+      font-weight: bold;
+      margin-bottom: 30px;
+
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      outline: none;
+
+      padding: 12px 20px;
+      border-radius: 12px;
+
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    button:active {
+      transform: scale(0.92);
+    }
+
+    #plus {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+
+    #min {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+    }
+
+    #restart {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 400px) {
+      .counter-card {
+        width: 90%;
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      #count {
+        font-size: 65px;
+      }
+
+      button {
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="counter-card">
+
+    <h1>Counter App</h1>
+
+    <h2 id="count">0</h2>
+
+    <div class="buttons">
+      <button id="plus">+</button>
+      <button id="min">−</button>
+      <button id="restart">Restart</button>
+    </div>
+
+    <div class="footer">
+      Glassmorphism Counter
+    </div>
+
+  </div>
+
+  <script>
+
+    let count = 0;
+
+    let countElement = document.getElementById("count");
+    let plusElement = document.getElementById("plus");
+    let minElement = document.getElementById("min");
+    let restartElement = document.getElementById("restart");
+
+    // Plus button
+    plusElement.addEventListener("click", function () {
+      count++;
+      countElement.textContent = count;
+    });
+
+    // Minus button
+    minElement.addEventListener("click", function () {
+      count--;
+      countElement.textContent = count;
+    });
+
+    // Restart button
+    restartElement.addEventListener("click", function () {
+      count = 0;
+      countElement.textContent = count;
+    });
+
+  </script>
+
+</body>
+</html>
