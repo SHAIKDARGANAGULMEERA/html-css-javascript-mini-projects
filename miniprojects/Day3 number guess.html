@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Number Guess</title>
+
+  <style>
+    .box {
+      width: 350px;
+      height: 220px;
+      border: 1px solid black;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 150px;
+      height: 20px;
+      display: block;
+      margin: auto;
+      padding: 10px;
+    }
+
+    button {
+      width: 150px;
+      height: 30px;
+      background-color: yellow;
+      display: block;
+      margin: 15px auto;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: blue;
+      color: white;
+    }
+
+    #result {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Number Guess</h1>
+
+  <div class="box">
+
+    <label for="number">Enter a number:</label>
+
+    <input type="number" id="number">
+
+    <button id="bu">Check the number</button>
+
+    <p id="result"></p>
+
+  </div>
+
+  <script>
+    let nu = document.getElementById("number");
+    let button = document.getElementById("bu");
+    let result = document.getElementById("result");
+
+    function checknumber() {
+
+      let number = Number(nu.value);
+
+      // Positive / Negative / Zero
+      if (number > 0) {
+        result.innerHTML = "🎉 It is a positive number.<br>";
+      } 
+      else if (number < 0) {
+        result.innerHTML = "It is a negative number.<br>";
+      } 
+      else {
+        result.innerHTML = "It is zero.<br>";
+      }
+
+      // Even / Odd
+      if (number % 2 == 0) {
+        result.innerHTML += "🎉 It is an even number.";
+      } 
+      else {
+        result.innerHTML += "It is an odd number.";
+      }
+    }
+
+    button.addEventListener("click", checknumber);
+  </script>
+
+</body>
+</html>
